@@ -1,0 +1,32 @@
+.main-link {
+    display: inline-block;
+    border-radius: 7px;
+    padding: 13PX 46px;
+    background-color: #F6F3E3;
+    font-size: 14px;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: #241D1C;
+    text-decoration: none;
+    transition: .3s;
+    cursor: pointer;
+    border: none;
+}
+/* При наведении но отсутствии disabled */
+.main-link:hover:not(:disabled) {
+    background-color: #EFE7BE;
+}
+
+.main-link:focus-visible {
+    outline: 1px solid #fff;
+}
+.main-link:disabled {
+    opacity: 0.4;
+}
+
+@media (max-width: 560px) {
+    .main-link {
+        padding: 10PX 24px;
+        font-size: 12px;
+    }
+}

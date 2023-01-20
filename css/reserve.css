@@ -46,6 +46,52 @@
     margin-bottom: 0;
 }
 
+@media (max-width: 768px) {
+    .reserve {
+        padding: 40px 0 80px;
+    }
+    .reserve__fieldset {
+        margin-bottom: 40px;
+    }
+    .reserve__title {
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+    .reserve__list {
+    margin-bottom: 40px;
+    }
+    .reserve__legend {
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+    .reserve__form-container {
+        margin-bottom: 32px;
+    }
+    .reserve__fieldset_sub {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 560px) {
+    .reserve {
+        padding: 32px 0 64px;
+    }
+    .reserve__title {
+        font-size: 20px;
+    }
+    .reserve__list {
+        padding-left: 18px;
+        margin-bottom: 32px;
+        font-size: 12px;
+    }
+    .reserve__form-container {
+        margin-bottom: 24px;
+    }
+    .reserve__fieldset {
+        margin-bottom: 32px;
+    }
+}
+
 
 
 

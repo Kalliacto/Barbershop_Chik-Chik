@@ -3,38 +3,41 @@
     padding-bottom: 17px;
     border-top: 1px solid #BFBDB2;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: max-content 1fr max-content;
     align-items: center;
-    justify-content: space-between;
+    gap: 40px;
 }
 .footer__navigation {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    margin-right: 54px;
-    white-space: nowrap;
+    justify-self: center;
 }
 
 .footer__list {
+    list-style: none;
     display: flex;
     flex-direction: column;
-    justify-self: end;
-    list-style: none;
-    gap: 10px;
-}
-.footer__item {
+    align-items: flex-start;
+    gap: 7px; 
     font-size: 12px;
     line-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.footer__link:hover {
+    text-decoration: underline;
+} 
+
+.footer__info {
+    margin: 0;
+    font-feature-settings: 'pnum' on, 'lnum' on;
 }
 
-@media (max-width: 760px) {
-    .footer__container {
-        grid-template-columns: 1fr 1fr;
-    }
-}
 
 @media (max-width: 560px) {
     .footer__container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr ;
+        gap: 32px;
+    }
+    .footer__navigation {
+        justify-self: flex-start;
     }
 }

@@ -1,10 +1,20 @@
+const API_URL = 'https:chocolate-fuzzy-chanter.glitch.me/api';
+
+/*
+GET /api - получить список услуг
+GET /api?service={n} - получить список барберов
+GET /api?spec={n} - получить список месяца работы барбера
+GET /api?spec={n}&month={n} - получить список дней работы барбера
+GET /api?spec={n}&month={n}&day={n} - получить список свободных часов барбера
+POST /api/order - оформить заказ
+*/
+
 const addPreload = (element) => {
     element.classList.add('preload');
-}
-
+};
 const removePreload = (element) => {
     element.classList.remove('preload');
-}
+};
 
 
 const startSlider = () => {
@@ -71,7 +81,7 @@ const startSlider = () => {
         sliderList.style.transform =`translateX(${position}px)`;
         checkSlide();
     });
-}
+};
 
 
 // --------------------------------------------------------
@@ -92,5 +102,74 @@ const initSlider = () => {
     });
 };
 
-window.addEventListener('DOMContentLoaded', initSlider);
+// --------------------------------------------------------
+const renderPrice = (wrapper, data) => {
+    data.forEach((item) => {
+        const priceItem = document.createElement('li');
+        priceItem.classList.add('price__item');
+
+        // Отрисовываем СТОИМОСТЬ НАШИХ УСЛУГ
+        priceItem.innerHTML = `
+            <span class="price__item-text">${item.name}</span>
+            <span class="price__item-count">${item.price} руб</span>
+        `
+        wrapper.append(priceItem);
+    });
+};
+
+const renderService = (wrapper, data) => {
+    const labels = data.map(item => {
+            const label = document.createElement('label');
+            label.classList.add('radio');
+
+            label.innerHTML = `
+                <input class="radio__input" type="radio" name="service" value="${item.id}">
+                <span class="radio__label">${item.name}</span>
+            `;
+            return label;
+    })
+    wrapper.append(...labels);
+};
+
+
+const initService = () => {
+    const priceList = document.querySelector('.price__list');
+    const reserveFieldsetService = document.querySelector('.reserve__fieldset_service');
+    priceList.textContent = ''; 
+    addPreload(priceList);
+
+    reserveFieldsetService.innerHTML = '<legend class="reserve__legend">Услуга</legend>'; 
+    addPreload(reserveFieldsetService);
+
+    // Получаем данные с сервера
+    fetch(API_URL)
+    .then(response => response.json())
+    .then(data => {
+        // Отрисовываем полученные данные блока СТОИМОСТЬ НАШИХ УСЛУГ
+        renderPrice(priceList, data);
+        removePreload(priceList);
+        return data;
+    })
+    .then(data => {
+        renderService(reserveFieldsetService, data);
+        removePreload(reserveFieldsetService);
+        return data;
+    })
+
+};
+
+
+const initReserve = () => {
+
+};
+// --------------------------------------------------------
+const init = () => {
+
+    initSlider();
+    initService();
+    initReserve();
+};
+
+
+window.addEventListener('DOMContentLoaded', init);
 

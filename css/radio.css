@@ -31,12 +31,24 @@
 }
 
 .radio__label_spec {
+    position: relative;
     padding-left: 52px;
+}
+
+.radio__label_spec:: {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transition: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    display: block;
+    border-radius: 50%;
     background-image: var(--bg-image);
-    block-size: 36px;
-    background-position: 8px;
     background-repeat: no-repeat;
-    object-fit: cover;
+    background-size: cover;
+    background-position: center;
 }
 
 @media (max-width: 768px) {
@@ -47,7 +59,10 @@
 
     .radio__label_spec {
         padding-left: 40px;
-        block-size: 24px;
+    }
+    .radio__label_spec:: {
+        width: 24px;
+        height: 24px;
     }
 }
 
